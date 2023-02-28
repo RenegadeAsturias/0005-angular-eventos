@@ -1,0 +1,21 @@
+<div class="container">
+
+	<br/><div>Listado de libros disponibles...</div><br/>
+
+    <div *ngIf="cargando"><br/>CARGANDO...</div>
+
+    <ul>
+		<li *ngFor="let libro of libros">
+			<a  [ngStyle]="{'cursor':'pointer'}">{{libro.title}}</a>
+		</li>
+	</ul>
+	
+	<!--Incluimos el siguiente código para que se muestre un mensaje de error
+	si falló la carga de nuestro Array en la conexión con el fichero externo -->
+	<div class="alert alert-warning" *ngIf="errorHttp">
+		No se puede mostrar la lista.
+	</div>
+	
+</div>
+
+
