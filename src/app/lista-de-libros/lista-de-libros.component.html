@@ -6,7 +6,10 @@
 
     <ul>
 		<li *ngFor="let libro of libros">
-			<a  [ngStyle]="{'cursor':'pointer'}">{{libro.title}}</a>
+			<a  [ngStyle]="{'cursor':'pointer'}">{{libro.title}}</a>&nbsp;
+            <a  [ngStyle]="{'cursor':'pointer'}"
+				[routerLink]="['/detalle', libro.id]">Ver detalle
+			</a>
 		</li>
 	</ul>
 	

@@ -5,11 +5,17 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ListaDeLibrosComponent } from './lista-de-libros/lista-de-libros.component';
+import { AcercaDeComponent } from './acerca-de/acerca-de.component';
+import { DetalleLibroComponent } from './detalle-libro/detalle-libro.component';
+import { CabeceraComponent } from './cabecera/cabecera.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListaDeLibrosComponent
+    ListaDeLibrosComponent,
+    AcercaDeComponent,
+    DetalleLibroComponent,
+    CabeceraComponent
   ],
   imports: [
     BrowserModule,
