@@ -8,6 +8,7 @@ import { ListaDeLibrosComponent } from './lista-de-libros/lista-de-libros.compon
 import { AcercaDeComponent } from './acerca-de/acerca-de.component';
 import { DetalleLibroComponent } from './detalle-libro/detalle-libro.component';
 import { CabeceraComponent } from './cabecera/cabecera.component';
+import { ShoppingCartStatusComponent } from './shopping-cart-status/shopping-cart-status.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CabeceraComponent } from './cabecera/cabecera.component';
     ListaDeLibrosComponent,
     AcercaDeComponent,
     DetalleLibroComponent,
-    CabeceraComponent
+    CabeceraComponent,
+    ShoppingCartStatusComponent
   ],
   imports: [
     BrowserModule,
