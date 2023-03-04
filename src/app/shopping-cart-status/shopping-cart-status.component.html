@@ -1,3 +1,11 @@
-<div *ngFor(let libro from modeloDeTienda)>
-    <p>Un libro</p>
+<!--
+<br/>
+<h3>Shopping Cart Status...Número de libros comprados: {{numLibrosComprados}}, total compra: {{totalCarrito}}</h3>
+<div *ngIf="librosComprados.length>0">
+    <div *ngFor="let libro of librosComprados">
+        <p>Libro comprado: {{libro.title}}</p>
+    </div>
 </div>
+-->
+<br/>
+<button class="button" (click)="onRealizarPago()">Comprar!</button>

@@ -1,16 +1,34 @@
+<app-shopping-cart-status 
+			[totalCarrito]="totalCarrito" 
+			[librosComprados]="librosComprados" 
+			(pagar)="onPagar()">
+</app-shopping-cart-status>
+
 <div class="container">
 
 	<br/><div>Listado de libros disponibles...</div><br/>
 
     <div *ngIf="cargando"><br/>CARGANDO...</div>
 
-    <ul>
-		<li *ngFor="let libro of libros">
-			<div [ngStyle]="{'cursor':'pointer'}" 
+	<div *ngFor="let libro of libros" [ngStyle]="{'width':'100%'}">
+		<div [ngStyle]="{'margin':'2px','padding':'2px','width':'32%','background-color':'antiquewhite'}">
+			Título:
+			<span [ngStyle]="{'cursor':'pointer'}" 
 					(click)="aniadirLibro(libro)">{{libro.title}} (Comprar)
-			</div>
-		</li>
-	</ul>
+			</span>
+			<span [ngStyle]="{'cursor':'pointer'}" 
+				 [routerLink]="['/detalle', libro.id]">(Ver detalle)
+		    </span>
+		</div>
+		<div [ngStyle]="{'margin':'2px','padding':'2px','width':'32%','background-color':'orange'}"
+				(click)="onRegularClick()" (contextmenu)="onRightClick()">
+			Categoría: {{libro.category}} (Mostrar/Ocultar precio)
+		</div>
+		<div [ngStyle]="{'margin':'2px','padding':'2px','width':'32%','background-color':'orange'}"
+			 class="contextual" [ngClass]="{'invisible': menuVisible}" >
+			 {{ libro.price | currency }}	
+		</div>
+	</div>
 	
 	<!--Incluimos el siguiente código para que se muestre un mensaje de error
 	si falló la carga de nuestro Array en la conexión con el fichero externo -->
@@ -30,13 +48,10 @@
 	</div>
 
 </div>
-<!--
-<app-shopping-cart-status 
-	[precio]="precioTotal" 
-	[modeloDeTienda]="modeloTienda.tiendaItems" 
-	(pagar)="onPagar()">
-</app-shopping-cart-status>
+<!-- Ejemplo para escucha Local, solo en el Input 
+<input type="text" name="escucharEvento" (keydown)="onTeclado($event)"/>
 -->
+
 <!--
 <button class="button" (click)="comprarLibro(libro)">Comprar</button>
 <a  [ngStyle]="{'cursor':'pointer'}">{{libro.title}}</a>&nbsp;

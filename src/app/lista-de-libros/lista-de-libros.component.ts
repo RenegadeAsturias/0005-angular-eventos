@@ -21,21 +21,25 @@ export class ListaDeLibrosComponent implements OnInit, OnDestroy, OnChanges {
   libros:any = [];
   librosComprados:Array<Libro> = [];
 
+  menuVisible:boolean = false;  
+
   constructor(private http:HttpClient) {
     this.tiendaSubscripcion = new Subscription();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    throw new Error('Method ngOnChanges not implemented.');
-  }
+	ngOnChanges(cambios: SimpleChanges): void {
+		console.log('ListaDeLibrosComponent cambios='+cambios);
+	}
 
   ngOnInit(): void {
     this.cargando = true;
     this.cargarLista();
-  }  
+    this.activarEventoTeclado();
+  }
 
   ngOnDestroy(): void {
     this.tiendaSubscripcion.unsubscribe;
+    document.removeEventListener("keypress",this.onTeclado);
   }
 
   cargarLista(){
@@ -48,7 +52,6 @@ export class ListaDeLibrosComponent implements OnInit, OnDestroy, OnChanges {
   aniadirLibro(libroSeleccionado:Libro) {
     let isLibroEnCarrito = this.librosComprados
           .some(libro => libro.id === libroSeleccionado.id);
-    console.log("isLibroEnCarrito="+isLibroEnCarrito);
     if(!isLibroEnCarrito) {
       this.librosComprados.push(libroSeleccionado);
       console.log(`libros Comprados=${this.librosComprados.length}`);
@@ -72,7 +75,28 @@ export class ListaDeLibrosComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   onPagar():void {
-    console.log("Pagar!!!");
+    console.log("Se ha emitido un EventEmitter desde el Shopphing Cart!");
+  }
+
+  onRegularClick() {
+    this.menuVisible = true;
+  }
+
+  onRightClick() {
+    this.menuVisible = false;
+    return false;
+  }
+
+  activarEventoTeclado(){
+    document.addEventListener("keypress", (evento)=>{
+      this.onTeclado(evento);
+    })
+  }
+
+  onTeclado(event:any) {
+    if(event.code==='Enter'){
+      alert("REALIZAR COMPRA!");
+    }
   }
   
 }

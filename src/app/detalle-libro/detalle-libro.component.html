@@ -1,5 +1,14 @@
-<p>Descripción del detalle del libro:</p>
-<p>... ... ...</p>
-<p>... ... ...</p>
-<p>... ... ...</p>
-<p>... ... ...</p>
+<p>Detalle del libro seleccionado...</p>
+<div *ngFor="let libro of libros">
+    <div *ngIf="libro.id==libroId">
+        <p><b>Título:</b>{{libro.title}}</p>
+        <p><b>Autor:</b>{{libro.author}}</p>
+        <p><b>Precio:</b>{{libro.price | currency}}</p>
+    </div>
+</div>
+<br/>
+<input id="volver" type="button" value="Volver"
+    [ngStyle]="{'background-color':'antiquewhite'}"
+    [routerLink]="['/lista-de-libros']" />
+
+
